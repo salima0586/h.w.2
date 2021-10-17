@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.filmapi.App;
 import com.example.filmapi.R;
 import com.example.filmapi.data.Films;
 import com.example.filmapi.databinding.FragmentFilmListBinding;
@@ -45,6 +46,8 @@ class FilmListFragment extends Fragment implements FilmAdapter.Callback,FilmAdap
     void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initView(view);
         getFilms();
+
+
     }
 
     private
@@ -80,6 +83,6 @@ class FilmListFragment extends Fragment implements FilmAdapter.Callback,FilmAdap
     @Override
     public
     void click(Films films) {
-
+        App.appDatabase.instance().insert( new Films(films.getTitle(),films.getOriginalTitle(),films.getProducer(),films.getDescription()) );
     }
 }

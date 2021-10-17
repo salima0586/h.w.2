@@ -16,7 +16,8 @@
         android:label="fragment_film_detail"
         tools:layout="@layout/fragment_film_detail" />
     <fragment
-        android:id="@+id/filmRoomFragment"
-        android:name="com.example.filmapi.ui.room_fragment.FilmRoomFragment"
-        android:label="FilmRoomFragment" />
+        android:id="@+id/roomFragment"
+        android:name="com.example.filmapi.ui.room_fragment.RoomFragment"
+        android:label="fragment_room"
+        tools:layout="@layout/fragment_room" />
 </navigation>

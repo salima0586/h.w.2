@@ -6,17 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.filmapi.R;
 import com.example.filmapi.data.Films;
 import com.example.filmapi.databinding.FragmentFilmDetailBinding;
-import com.example.filmapi.databinding.FragmentFilmListBinding;
 import com.example.filmapi.remote.RetrofitBuilder;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +31,7 @@ class FilmDetailFragment extends Fragment {
     void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 
-        if (getArguments() != null){
+        if (getArguments() != null) {
             id = getArguments().getString( "id" );
         }
     }
@@ -43,7 +40,7 @@ class FilmDetailFragment extends Fragment {
     public
     View onCreateView(LayoutInflater inflater, ViewGroup container,
                       Bundle savedInstanceState) {
-        binding = FragmentFilmDetailBinding.inflate(inflater,container, false );
+        binding = FragmentFilmDetailBinding.inflate( inflater, container, false );
         return binding.getRoot();
     }
 
@@ -56,10 +53,10 @@ class FilmDetailFragment extends Fragment {
             @Override
             public
             void onResponse(Call<Films> call, Response<Films> response) {
-                if (response.isSuccessful() && response.body() != null){
+                if (response.isSuccessful() && response.body() != null) {
 
                     binding.tvTitle.setText( response.body().getTitle() );
-                    binding.tvProducer.setText( response.body().getOriginalTitle());
+                    binding.tvProducer.setText( response.body().getOriginalTitle() );
                     binding.desc.setText( response.body().getDescription() );
                 }
             }
@@ -67,7 +64,7 @@ class FilmDetailFragment extends Fragment {
             @Override
             public
             void onFailure(Call<Films> call, Throwable t) {
-
+                Log.d( "tag", "failure: " + t.getLocalizedMessage() );
             }
         } );
     }
